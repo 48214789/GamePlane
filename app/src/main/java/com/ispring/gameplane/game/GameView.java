@@ -175,7 +175,7 @@ public class GameView extends View {
         }
 
         //检查战斗机跑到子弹前面的情况
-        destroyBulletsFrontOfCombatAircraft();
+//        destroyBulletsFrontOfCombatAircraft();
 
         //在绘制之前先移除掉已经被destroyed的Sprite
         removeDestroyedSprites();
@@ -447,7 +447,7 @@ public class GameView extends View {
                 if(combatAircraft != null){
                     combatAircraft.centerTo(touchX, touchY);
                 }
-            }else if(touchType == TOUCH_DOUBLE_CLICK){
+            }else if(touchType == TOUCH_SINGLE_CLICK){
                 if(status == STATUS_GAME_STARTED){
                     if(combatAircraft != null){
                         //双击会使得战斗机使用炸弹
@@ -507,6 +507,7 @@ public class GameView extends View {
                     //如果那时形成了第二个单击事件，那么我们就与此次的单击事件合成一次双击事件
                     //否则在doubleClickDurationTime毫秒后触发此次的单击事件
                     lastSingleClickTime = touchUpTime;
+                    touchType = TOUCH_SINGLE_CLICK;
                 }
             }
         }
